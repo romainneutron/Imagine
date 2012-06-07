@@ -4,5 +4,5 @@ docs/_build
 Imagine-*.tgz
 imagine-*.phar
 composer.phar
-vendor/
-bin/
+vendor
+bin
