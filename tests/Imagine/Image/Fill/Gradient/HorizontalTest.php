@@ -9,7 +9,7 @@
  */
 namespace Imagine\Image\Fill\Gradient;
 
-use Imagine\Image\Color;
+use Imagine\Image\Palette\Color\ColorInterface;
 use Imagine\Image\Point;
 
 class HorizontalTest extends LinearTest
@@ -20,7 +20,7 @@ class HorizontalTest extends LinearTest
      */
     protected function getEnd()
     {
-        return new Color('fff');
+        return $this->getColor('fff');
     }
 
     /**
@@ -29,14 +29,14 @@ class HorizontalTest extends LinearTest
      */
     protected function getStart()
     {
-        return new Color('000');
+        return $this->getColor('000');
     }
 
     /**
      * (non-PHPdoc)
      * @see Imagine\Image\Fill\Gradient\LinearTest::getMask()
      */
-    protected function getFill(Color $start, Color $end)
+    protected function getFill(ColorInterface $start, ColorInterface $end)
     {
         return new Horizontal(100, $start, $end);
     }
@@ -47,8 +47,10 @@ class HorizontalTest extends LinearTest
      */
     public function getPointsAndColors()
     {
-        return array(array(new Color('fff'), new Point(100, 5)),
-        array(new Color('000'), new Point(0, 15)),
-        array(new Color(array(128, 128, 128)), new Point(50, 25)));
+        return array(
+            array($this->getColor('fff'), new Point(100, 5)),
+            array($this->getColor('000'), new Point(0, 15)),
+            array($this->getColor(array(128, 128, 128)), new Point(50, 25))
+        );
     }
 }

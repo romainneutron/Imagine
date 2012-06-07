@@ -27,6 +27,7 @@ class LayersTest extends AbstractLayersTest
 
     public function testCount()
     {
+        $palette = $this->getMock('Imagine\Image\Palette\PaletteInterface');
         $resource = $this->getMockBuilder('\Imagick')
             ->disableOriginalConstructor()
             ->getMock();
@@ -35,13 +36,14 @@ class LayersTest extends AbstractLayersTest
             ->method('getNumberImages')
             ->will($this->returnValue(42));
 
-        $layers = new Layers(new Image($resource), $resource);
+        $layers = new Layers(new Image($resource, $palette), $palette, $resource);
 
         $this->assertCount(42, $layers);
     }
 
     public function testGetLayer()
     {
+        $palette = $this->getMock('Imagine\Image\Palette\PaletteInterface');
         $resource = $this->getMockBuilder('\Imagick')
             ->disableOriginalConstructor()
             ->getMock();
@@ -58,7 +60,7 @@ class LayersTest extends AbstractLayersTest
             ->method('getImage')
             ->will($this->returnValue($layer));
 
-        $layers = new Layers(new Image($resource), $resource);
+        $layers = new Layers(new Image($resource, $palette), $palette, $resource);
 
         foreach($layers as $layer) {
             $this->assertInstanceOf('Imagine\Image\ImageInterface', $layer);
@@ -71,10 +73,11 @@ class LayersTest extends AbstractLayersTest
         $height = null;
 
         $resource = new \Imagick;
+        $palette = $this->getMock('Imagine\Image\Palette\PaletteInterface');
         $resource->newImage(20, 10, new \ImagickPixel("black"));
         $resource->newImage(10, 10, new \ImagickPixel("black"));
 
-        $layers = new Layers(new Image($resource), $resource);
+        $layers = new Layers(new Image($resource, $palette), $palette, $resource);
         $layers->coalesce();
 
         foreach ($layers as $layer) {

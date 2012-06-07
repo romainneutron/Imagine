@@ -12,14 +12,13 @@
 namespace Imagine\Filter\Advanced;
 
 use Imagine\Image\Point;
-use Imagine\Image\Color;
 use Imagine\Filter\FilterTestCase;
 
 class BorderTest extends FilterTestCase
 {
     public function testBorderImage()
     {
-        $color       = new Color('fff');
+        $color       = $this->getMock('Imagine\\Image\\Palette\\Color\\ColorInterface');
         $width       = 2;
         $height      = 4;
         $image       = $this->getImage();
