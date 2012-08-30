@@ -42,4 +42,14 @@ interface EffectsInterface
      * @throws RuntimeException
      */
     public function grayscale();
+
+    /**
+     * Adjust image brightness
+     *
+     * @param  float            $brightness The brightness adjustement in percent. 0 means 0% of brightness, 1 100% of brightness
+     * @return EffectsInterface
+     *
+     * @throws RuntimeException
+     */
+    public function brightness($brightness);
 }

@@ -9,7 +9,7 @@ use Imagine\Exception\RuntimeException;
 
 class Issue67Test extends \PHPUnit_Framework_TestCase
 {
-    
+
     private function getImagine()
     {
         try {
@@ -26,7 +26,7 @@ class Issue67Test extends \PHPUnit_Framework_TestCase
     */
     public function testShouldThrowExceptionNotError()
     {
-        $invalidPath = '/thispathdoesnotexist';
+        $invalidPath = '/thispathdoesnotexist/';
 
         $imagine = $this->getImagine();
 

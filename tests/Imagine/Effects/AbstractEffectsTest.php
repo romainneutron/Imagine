@@ -73,6 +73,36 @@ abstract class AbstractEffectsTest extends \PHPUnit_Framework_TestCase
 
 
     /**
+     * @dataProvider getBrightnessValues
+     */
+    public function testBrightness($start, $adjustment, $end)
+    {
+        $imagine = $this->getImagine();
+
+        $image = $imagine->create(new Box(20, 20), new Color($start));
+        $image->effects()
+            ->brightness($adjustment);
+
+        $pixel = $image->getColorAt(new Point(10, 10));
+
+        $this->assertEquals($end, (string) $pixel);
+    }
+
+    public function getBrightnessValues()
+    {
+        return array(
+            array('111', 0, '#000000'),
+            array('111', 1, '#111111'),
+            array('111', 2, '#222222'),#
+            array('222', 2, '#444444'),
+            array('111', 3, '#333333'),#
+            array('fff', 2, '#ffffff'),
+            array('5E5F01', 1.8, '#5E5F01'),#
+            array('fff', -2, '#dddddd'),#
+        );
+    }
+
+    /**
      * @return ImagineInterface
      */
     abstract protected function getImagine();

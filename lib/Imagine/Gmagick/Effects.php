@@ -69,4 +69,18 @@ class Effects implements EffectsInterface
 
         return $this;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function brightness($brightness)
+    {
+        try {
+            $this->gmagick->modulateimage($brightness*100, 0, 0);
+        } catch (\GmagickException $e) {
+            throw new RuntimeException('Failed to adjust brightness');
+        }
+
+        return $this;
+    }
 }

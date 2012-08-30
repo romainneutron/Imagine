@@ -58,4 +58,21 @@ class Effects implements EffectsInterface
 
         return $this;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function brightness($brightness)
+    {
+//        $brightness = max(-255, min(255, 8.5*$brightness/100));
+
+
+        $brightness = $brightness * 16 ;
+
+        if (false === imagefilter($this->ressource, IMG_FILTER_BRIGHTNESS, $brightness)) {
+            throw new RuntimeException('GD Failed to adjust brightness');
+        }
+
+        return $this;
+    }
 }
