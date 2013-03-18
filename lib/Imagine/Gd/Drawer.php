@@ -14,9 +14,9 @@ namespace Imagine\Gd;
 use Imagine\Draw\DrawerInterface;
 use Imagine\Exception\InvalidArgumentException;
 use Imagine\Exception\RuntimeException;
-use Imagine\Image\AbstractFont;
 use Imagine\Image\BoxInterface;
 use Imagine\Image\Color;
+use Imagine\Image\FontInterface;
 use Imagine\Image\PointInterface;
 
 /**
@@ -209,7 +209,7 @@ final class Drawer implements DrawerInterface
     /**
      * {@inheritdoc}
      */
-    public function text($string, AbstractFont $font, PointInterface $position, $angle = 0)
+    public function text($string, FontInterface $font, PointInterface $position, $angle = 0)
     {
         if (!$this->info['FreeType Support']) {
             throw new RuntimeException('GD is not compiled with FreeType support');
@@ -244,11 +244,11 @@ final class Drawer implements DrawerInterface
      *
      * Generates a GD color from Color instance
      *
-     * @param Imagine\Image\Color $color
+     * @param Color $color
      *
      * @return resource
      *
-     * @throws Imagine\Exception\RuntimeException
+     * @throws RuntimeException
      */
     private function getColor(Color $color)
     {

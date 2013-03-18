@@ -14,9 +14,9 @@ namespace Imagine\Imagick;
 use Imagine\Draw\DrawerInterface;
 use Imagine\Exception\InvalidArgumentException;
 use Imagine\Exception\RuntimeException;
-use Imagine\Image\AbstractFont;
 use Imagine\Image\BoxInterface;
 use Imagine\Image\Color;
+use Imagine\Image\FontInterface;
 use Imagine\Image\Point;
 use Imagine\Image\PointInterface;
 
@@ -333,7 +333,7 @@ final class Drawer implements DrawerInterface
     /**
      * {@inheritdoc}
      */
-    public function text($string, AbstractFont $font, PointInterface $position, $angle = 0)
+    public function text($string, FontInterface $font, PointInterface $position, $angle = 0)
     {
         try {
             $pixel = $this->getColor($font->getColor());

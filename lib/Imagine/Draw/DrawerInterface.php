@@ -11,9 +11,10 @@
 
 namespace Imagine\Draw;
 
-use Imagine\Image\AbstractFont;
+use Imagine\Exception\RuntimeException;
 use Imagine\Image\BoxInterface;
 use Imagine\Image\Color;
+use Imagine\Image\FontInterface;
 use Imagine\Image\PointInterface;
 
 /**
@@ -25,14 +26,14 @@ interface DrawerInterface
      * Draws an arc on a starting at a given x, y coordinates under a given
      * start and end angles
      *
-     * @param Imagine\Image\PointInterface $center
-     * @param Imagine\Image\BoxInterface   $size
-     * @param integer                      $start
-     * @param integer                      $end
-     * @param Imagine\Image\Color          $color
-     * @param integer                      $thickness
+     * @param PointInterface $center
+     * @param BoxInterface   $size
+     * @param integer        $start
+     * @param integer        $end
+     * @param Color          $color
+     * @param integer        $thickness
      *
-     * @throws Imagine\Exception\RuntimeException
+     * @throws RuntimeException
      *
      * @return DrawerInterface
      */
@@ -41,15 +42,15 @@ interface DrawerInterface
     /**
      * Same as arc, but also connects end points with a straight line
      *
-     * @param Imagine\Image\PointInterface $center
-     * @param Imagine\Image\BoxInterface   $size
-     * @param integer                      $start
-     * @param integer                      $end
-     * @param Imagine\Image\Color          $color
-     * @param Boolean                      $fill
-     * @param integer                      $thickness
+     * @param PointInterface $center
+     * @param BoxInterface   $size
+     * @param integer        $start
+     * @param integer        $end
+     * @param Color          $color
+     * @param Boolean        $fill
+     * @param integer        $thickness
      *
-     * @throws Imagine\Exception\RuntimeException
+     * @throws RuntimeException
      *
      * @return DrawerInterface
      */
@@ -59,13 +60,13 @@ interface DrawerInterface
      * Draws and ellipse with center at the given x, y coordinates, and given
      * width and height
      *
-     * @param Imagine\Image\PointInterface $center
-     * @param Imagine\Image\BoxInterface   $size
-     * @param Imagine\Image\Color          $color
-     * @param Boolean                      $fill
-     * @param integer                      $thickness
+     * @param PointInterface $center
+     * @param BoxInterface   $size
+     * @param Color          $color
+     * @param Boolean        $fill
+     * @param integer        $thickness
      *
-     * @throws Imagine\Exception\RuntimeException
+     * @throws RuntimeException
      *
      * @return DrawerInterface
      */
@@ -74,10 +75,10 @@ interface DrawerInterface
     /**
      * Draws a line from start(x, y) to end(x, y) coordinates
      *
-     * @param Imagine\Image\PointInterface $start
-     * @param Imagine\Image\PointInterface $end
-     * @param Imagine\Image\Color          $outline
-     * @param integer                      $thickness
+     * @param PointInterface $start
+     * @param PointInterface $end
+     * @param Color          $outline
+     * @param integer        $thickness
      *
      * @return DrawerInterface
      */
@@ -86,15 +87,15 @@ interface DrawerInterface
     /**
      * Same as arc, but connects end points and the center
      *
-     * @param Imagine\Image\PointInterface $center
-     * @param Imagine\Image\BoxInterface   $size
-     * @param integer                      $start
-     * @param integer                      $end
-     * @param Imagine\Image\Color          $color
-     * @param Boolean                      $fill
-     * @param integer                      $thickness
+     * @param PointInterface $center
+     * @param BoxInterface   $size
+     * @param integer        $start
+     * @param integer        $end
+     * @param Color          $color
+     * @param Boolean        $fill
+     * @param integer        $thickness
      *
-     * @throws Imagine\Exception\RuntimeException
+     * @throws RuntimeException
      *
      * @return DrawerInterface
      */
@@ -104,10 +105,10 @@ interface DrawerInterface
      * Places a one pixel point at specific coordinates and fills it with
      * specified color
      *
-     * @param Imagine\Image\PointInterface $position
-     * @param Imagine\Image\Color          $color
+     * @param PointInterface $position
+     * @param Color          $color
      *
-     * @throws Imagine\Exception\RuntimeException
+     * @throws RuntimeException
      *
      * @return DrawerInterface
      */
@@ -117,12 +118,12 @@ interface DrawerInterface
      * Draws a polygon using array of x, y coordinates. Must contain at least
      * three coordinates
      *
-     * @param array               $coordinates
-     * @param Imagine\Image\Color $color
-     * @param Boolean             $fill
-     * @param integer             $thickness
+     * @param array   $coordinates
+     * @param Color   $color
+     * @param Boolean $fill
+     * @param integer $thickness
      *
-     * @throws Imagine\Exception\RuntimeException
+     * @throws RuntimeException
      *
      * @return DrawerInterface
      */
@@ -134,14 +135,14 @@ interface DrawerInterface
      *
      * The rotation is done CW
      *
-     * @param string                       $string
-     * @param Imagine\Image\AbstractFont   $font
-     * @param Imagine\Image\PointInterface $position
-     * @param integer                      $angle
+     * @param string         $string
+     * @param FontInterface  $font
+     * @param PointInterface $position
+     * @param integer        $angle
      *
      * @throws Imagine\Exception\RuntimeException
      *
      * @return DrawerInterface
      */
-    public function text($string, AbstractFont $font, PointInterface $position, $angle = 0);
+    public function text($string, FontInterface $font, PointInterface $position, $angle = 0);
 }

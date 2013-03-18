@@ -542,7 +542,7 @@ final class Image implements ImageInterface
     {
         return $this->layers;
     }
-    
+
     /**
      * {@inheritdoc}
      **/
@@ -558,9 +558,9 @@ final class Image implements ImageInterface
         if (!array_key_exists($scheme, $supportedInterlaceSchemes)) {
             throw new InvalidArgumentException('Unsupported interlace type');
         }
-        
+
         $this->gmagick->setInterlaceScheme($supportedInterlaceSchemes[$scheme]);
-        
+
         return $this;
     }
 
