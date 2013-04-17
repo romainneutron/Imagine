@@ -13,6 +13,7 @@ namespace Imagine\Gmagick;
 
 use Imagine\Image\AbstractLayersTest;
 use Imagine\Image\ImageInterface;
+use Imagine\Image\Palette\RGB;
 
 class LayersTest extends AbstractLayersTest
 {
@@ -75,9 +76,9 @@ class LayersTest extends AbstractLayersTest
     public function getImage($path = null)
     {
         if ($path ) {
-            return new Image(new \Gmagick($path));
+            return new Image(new \Gmagick($path), new RGB());
         } else {
-            return new Image(new \Gmagick());
+            return new Image(new \Gmagick(), new RGB());
         }
     }
 
