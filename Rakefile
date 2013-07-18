@@ -78,6 +78,8 @@ task :test do
     INI
   end
 
+  system "php --ri gmagick"
+
   exitcode = 1 unless system "phpunit tests/"
 
   puts "testing with imagick enabled"
@@ -88,6 +90,8 @@ task :test do
     extension=imagick.so
     INI
   end
+
+  system "php --ri imagick"
 
   exitcode = 1 unless system "phpunit tests/"
 
