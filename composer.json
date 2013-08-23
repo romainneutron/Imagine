@@ -22,9 +22,6 @@
   "require": {
     "php": ">=5.3.2"
   },
-  "replace": {
-    "imagine/imagine": "*"
-  },
   "require-dev": {
     "sami/sami": "dev-master"
   },
