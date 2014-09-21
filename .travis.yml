@@ -4,7 +4,7 @@ env:
   - IMAGINE_DRIVER=imagick
   - IMAGINE_DRIVER=gmagick
 
-before_script:
+before_install:
   - composer self-update
   - composer install --prefer-source
   - sudo apt-get remove -y imagemagick libmagickcore-dev libmagickwand-dev
@@ -42,6 +42,12 @@ before_script:
               echo \"extension=gmagick.so\" >> `php --ini | grep \"Loaded Configuration\" | sed -e \"s|.*:\s*||\"`;
               php --ri gmagick;
             fi"
+
+install:
+    - composer install --prefer-source
+
+script:
+    - phpunit
 
 php:
   - 5.3.3
